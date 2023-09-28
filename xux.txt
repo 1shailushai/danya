@@ -1,1 +1,165 @@
-rers.txt
+// практическая (Беца Даня)
+using System;
+
+class Calculator
+{
+    static void Main()
+    {
+        int choice;
+        double num1, num2;
+
+        do
+        {
+            Console.WriteLine("Выберите операцию:");
+            Console.WriteLine("1. Сложение");
+            Console.WriteLine("2. Вычитание");
+            Console.WriteLine("3. Умножение");
+            Console.WriteLine("4. Деление");
+            Console.WriteLine("5. Возведение в степень");
+            Console.WriteLine("6. Квадратный корень");
+            Console.WriteLine("7. 1 процент от числа");
+            Console.WriteLine("8. Факториал");
+            Console.WriteLine("9. Выйти");
+
+            while (!int.TryParse(Console.ReadLine(), out choice))
+            {
+                Console.WriteLine("Неверный ввод. Попробуйте еще раз.");
+            }
+
+            switch (choice)
+            {
+                case 1:
+                    Console.Write("Введите первое число: ");
+                    num1 = GetNumber();
+
+                    Console.Write("Введите второе число: ");
+                    num2 = GetNumber();
+
+                    double sum = num1 + num2;
+                    Console.WriteLine("Сумма: " + sum);
+                    break;
+
+                case 2:
+                    Console.Write("Введите первое число: ");
+                    num1 = GetNumber();
+
+                    Console.Write("Введите второе число: ");
+                    num2 = GetNumber();
+
+                    double difference = num1 - num2;
+                    Console.WriteLine("Разность: " + difference);
+                    break;
+
+                case 3:
+                    Console.Write("Введите первое число: ");
+                    num1 = GetNumber();
+
+                    Console.Write("Введите второе число: ");
+                    num2 = GetNumber();
+
+                    double product = num1 * num2;
+                    Console.WriteLine("Произведение: " + product);
+                    break;
+
+                case 4:
+                    Console.Write("Введите первое число: ");
+                    num1 = GetNumber();
+
+                    Console.Write("Введите второе число: ");
+                    num2 = GetNumber();
+
+                    if (num2 != 0)
+                    {
+                        double quotient = num1 / num2;
+                        Console.WriteLine("Частное: " + quotient);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Деление на 0 невозможно.");
+                    }
+                    break;
+
+                case 5:
+                    Console.Write("Введите число: ");
+                    num1 = GetNumber();
+
+                    Console.Write("Введите степень: ");
+                    int power = GetPower();
+
+                    double result = Math.Pow(num1, power);
+                    Console.WriteLine("Результат возведения в степень: " + result);
+                    break;
+
+                case 6:
+                    Console.Write("Введите число: ");
+                    num1 = GetNumber();
+
+                    if (num1 >= 0)
+                    {
+                        double squareRoot = Math.Sqrt(num1);
+                        Console.WriteLine("Квадратный корень: " + squareRoot);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Невозможно извлечь квадратный корень из отрицательного числа.");
+                    }
+                    break;
+
+                case 7:
+                    Console.Write("Введите число: ");
+                    num1 = GetNumber();
+
+                    double percent = num1 * 0.01;
+                    Console.WriteLine("1 процент от числа: " + percent);
+                    break;
+
+                case 8:
+                    Console.Write("Введите число: ");
+                    num1 = GetNumber();
+                    double factorial = CalculateFactorial(num1);
+                    Console.WriteLine("Факториал числа: " + factorial);
+                    break;
+
+                case 9:
+                    Console.WriteLine("Программа завершена.");
+                    break;
+
+                default:
+                    Console.WriteLine("Неверная операция.");
+                    break;
+            }
+        } while (choice != 9);
+    }
+
+    static double GetNumber()
+    {
+        double number;
+        while (!double.TryParse(Console.ReadLine(), out number))
+        {
+            Console.WriteLine("Неверный ввод числа. Попробуйте еще раз.");
+        }
+        return number;
+    }
+
+    static int GetPower()
+    {
+        int power;
+        while (!int.TryParse(Console.ReadLine(), out power))
+        {
+            Console.WriteLine("Неверный ввод степени. Попробуйте еще раз.");
+        }
+        return power;
+    }
+
+    static double CalculateFactorial(double n)
+    {
+        if (n == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return n * CalculateFactorial(n - 1);
+        }
+    }
+}
