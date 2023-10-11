@@ -87,3 +87,13 @@ int factorial = 1;
                     Console.WriteLine($"Факториал числа {factorialNum}: {factorial}"); 
                     break; 
                 case 9:
+                    Console.WriteLine("Программа завершена.");
+                    break;
+                default:
+                    Console.WriteLine("Ошибка: неверный ввод операции. Попробуйте ещё раз.");
+                    break;
+            }
+            Console.WriteLine();
+        } while (choice != 9);
+    }
+}
